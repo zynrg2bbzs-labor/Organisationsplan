@@ -13,3 +13,6 @@
 .sectionhead .link {flex-shrink:0;}
 .import-filename {display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden;overflow-wrap:anywhere;word-break:break-word;}
 @media(max-width:360px){.tile{padding:12px}.grid{gap:8px}.tile strong{font-size:13px}}
+
+/* V0.2.3: Sachgebietsleitung im Kopf hervorheben */
+.leader-preview{margin-top:7px;color:var(--fg);font-size:13px;line-height:1.4}.leader-label{color:var(--accent);font-weight:700}.leader-detail{border-left:3px solid var(--accent);padding-left:10px;margin:12px 0 16px}.detail summary{overflow-wrap:anywhere}

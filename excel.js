@@ -1,7 +1,7 @@
 /* Offline Excel (.xlsx) reader; no network requests. */
 'use strict';
 const REQUIRED={Personen:['Name','Telefon','Zimmer','AV 1','AV 2','Arbeitsbereich 1','Arbeitsbereich 2','Arbeitsbereich 3','Arbeitsbereich 4','Rolle','Hinweis'],Organisationseinheiten:['Arbeitsbereich','Hauptbereich','Darstellung','Steuernummer','Buchstaben / Zuständigkeit','AV','Beschreibung / Text unter Überschrift'],Sonderzuständigkeiten:['Sonderzuständigkeit','Name','Telefon','Zimmer','Hinweis'],Bewertung_Gemarkungen:['Teilbezirk','Gemeinde','Gemarkung','Gemeindeschlüssel','Bearbeiter']};
-function xml(s){let d=new DOMParser().parseFromString(s,'application/xml');if(d.getElementsByTagName('parsererror').length)throw Error('Ungültige Excel-XML-Struktur');return d}
+function xml(s){s=s.replace(/^\uFEFF/,'').replace(/^\s*(?=<\?xml)/,'');let d=new DOMParser().parseFromString(s,'application/xml');if(d.getElementsByTagName('parsererror').length)throw Error('Ungültige Excel-XML-Struktur');return d}
 function tags(el,name){return [...el.getElementsByTagNameNS('*',name)]}
 function first(el,name){return tags(el,name)[0]}
 function cellCol(ref){let s=(ref||'').match(/^[A-Z]+/i)?.[0]||'A',n=0;for(let c of s.toUpperCase())n=n*26+c.charCodeAt(0)-64;return n-1}

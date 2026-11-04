@@ -16,3 +16,6 @@
 
 /* V0.2.3: Sachgebietsleitung im Kopf hervorheben */
 .leader-preview{margin-top:7px;color:var(--fg);font-size:13px;line-height:1.4}.leader-label{color:var(--accent);font-weight:700}.leader-detail{border-left:3px solid var(--accent);padding-left:10px;margin:12px 0 16px}.detail summary{overflow-wrap:anywhere}
+
+/* V0.2.4: kompakte Diensthandy-Zeile */
+.mobile-row{padding:9px 12px;margin:9px 0;gap:8px;min-height:0}.mobile-row span{min-width:0;overflow-wrap:anywhere;font-size:13px}.mobile-row small{font-size:10px;margin-top:2px}.mobile-row .pill{padding:5px 8px;flex-shrink:0}.mobile-row a{font-size:12px;flex-shrink:0}

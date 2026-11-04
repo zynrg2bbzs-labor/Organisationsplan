@@ -1,1 +1,1 @@
-Organisationsplan PWA V0.2.3 – datenfrei. Testversion mit hervorgehobener Sachgebietsleitung, ohne sichtbare Darstellungstypen und ohne doppelte Rollen in Standard-Personenspalten. Neue fiktive Excel-Testdatei separat importieren. Keine echten Mitarbeiterdaten enthalten. Achtung: Testversion; keine echte Mitarbeiter-Excel importieren.
+Organisationsplan V0.2.4 – datenfreie PWA. Korrekturen: iOS-Suchfeld behält Fokus und Leerzeichen; Funktionsanzeige im Profil; kompakteres Diensthandy. Nur fiktive Daten testen. Keine echten Personendaten hochladen.

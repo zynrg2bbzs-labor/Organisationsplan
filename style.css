@@ -30,3 +30,9 @@
 .special-notes p{margin:6px 0}
 .rating-hint{margin:7px 3px 12px}
 #rating-results h3{color:var(--accent);margin:14px 0 8px}
+
+/* V0.2.6: update notification, independent from page rendering */
+#orgplan-update{position:fixed;z-index:9999;left:12px;right:12px;bottom:calc(78px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:9px;padding:12px;border-radius:14px;background:#1B2930;color:#F2F8F8;border:1px solid #30C7BA;box-shadow:0 5px 20px #0006;font-size:13px}
+#orgplan-update span{flex:1}
+#orgplan-update button{border:0;border-radius:8px;padding:9px;background:#30C7BA;color:#0B1016;font-weight:700;white-space:nowrap}
+#orgplan-update #orgplan-update-close{background:transparent;color:#F2F8F8;font-size:20px;padding:4px}

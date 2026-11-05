@@ -54,4 +54,43 @@ function downloadJSON(data,name){let blob=new Blob([JSON.stringify(data)],{type:
 function exportBackup(){downloadJSON({format:'orgplan-backup-v1',dataset:db,history,favorites,chosen,mobile,prefs},'Organisationsplan_Sicherung.json')}
 async function restoreBackup(file){if(!file)return;try{let x=JSON.parse(await file.text());if(x.format!=='orgplan-backup-v1'||!x.dataset||!Array.isArray(x.dataset.Personen))throw Error('Keine gültige Organisationsplan-Sicherung.');if(!confirm('Vorhandene Daten und persönliche Einstellungen durch diese Sicherung ersetzen?'))return;save('orgplan-dataset',x.dataset);db=x.dataset;history=x.history||[];favorites=x.favorites||[];chosen=x.chosen||[];mobile=x.mobile||{};prefs=x.prefs||{};save('history',history);save('favorites',favorites);save('chosen',chosen);save('mobile',mobile);save('prefs',prefs);page=null;tab='start';render()}catch(e){alert('Wiederherstellung fehlgeschlagen: '+e.message)}}
 document.addEventListener('change',e=>{if(e.target.id==='excelFile'){loadExcel(e.target.files?.[0]);e.target.value=''}if(e.target.id==='backupFile'){restoreBackup(e.target.files?.[0]);e.target.value=''}});
-function init(){db=read('orgplan-dataset',db);history=read('history',[]);favorites=read('favorites',[]);chosen=read('chosen',[]);mobile=read('mobile',{});prefs=read('prefs',{});render();if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js').catch(()=>{})}init();
+function init(){db=read('orgplan-dataset',db);history=read('history',[]);favorites=read('favorites',[]);chosen=read('chosen',[]);mobile=read('mobile',{});prefs=read('prefs',{});render();if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js',{updateViaCache:'none'}).then(reg=>{reg.update().catch(()=>{});}).catch(()=>{});initUpdater()}init();
+
+/* V0.2.6: updater UI is outside #app so ordinary rendering cannot erase it. */
+const APP_VERSION='0.2.6';
+let latestVersion=null;
+function showUpdateNotice(version){
+ latestVersion=version;
+ let bar=document.getElementById('orgplan-update');
+ if(!bar){bar=document.createElement('div');bar.id='orgplan-update';document.body.appendChild(bar)}
+ bar.innerHTML='<span>Neue Version '+escapeInput(version)+' verfügbar.</span><button type="button" id="orgplan-update-btn">Jetzt aktualisieren</button><button type="button" id="orgplan-update-close" aria-label="Schließen">×</button>';
+ document.getElementById('orgplan-update-btn').onclick=applyAppUpdate;
+ document.getElementById('orgplan-update-close').onclick=()=>bar.remove();
+}
+async function checkAppVersion(){
+ if(!navigator.onLine)return;
+ try{
+  const url=new URL('./version.json',location.href);
+  url.searchParams.set('check',String(Date.now()));
+  const response=await fetch(url.href,{cache:'no-store'});
+  if(!response.ok)return;
+  const info=await response.json();
+  if(info.version&&info.version!==APP_VERSION)showUpdateNotice(info.version);
+ }catch(e){/* offline or transient failure: keep current app */}
+}
+async function applyAppUpdate(){
+ const btn=document.getElementById('orgplan-update-btn');
+ if(btn){btn.disabled=true;btn.textContent='Aktualisiere …'}
+ try{
+  if('serviceWorker' in navigator){const reg=await navigator.serviceWorker.getRegistration();if(reg)await reg.update()}
+  location.reload();
+ }catch(e){if(btn){btn.disabled=false;btn.textContent='Erneut versuchen'}alert('Update derzeit nicht möglich. Bitte Internetverbindung prüfen.')}
+}
+function initUpdater(){
+ sessionStorage.removeItem('orgplan-reload-once');
+ checkAppVersion();
+ window.addEventListener('online',checkAppVersion);
+ document.addEventListener('visibilitychange',()=>{if(!document.hidden)checkAppVersion()});
+ window.addEventListener('pageshow',checkAppVersion);
+ if('serviceWorker'in navigator){navigator.serviceWorker.addEventListener('controllerchange',()=>{if(!sessionStorage.getItem('orgplan-reload-once')){sessionStorage.setItem('orgplan-reload-once','1');location.reload()}})}
+}

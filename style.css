@@ -46,3 +46,15 @@
 /* V0.2.8: accent selection and preview */
 .accent-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0}.accent-option{border:1px solid #45616a;border-radius:12px;background:var(--card);color:var(--fg);padding:12px 5px;display:flex;flex-direction:column;align-items:center;gap:7px}.accent-option.selected{border:2px solid var(--accent)}.accent-dot{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:#0b1016;font-weight:800;font-size:19px}.accent-option small{font-size:11px}.design-preview .label{font-size:14px}.design-preview strong{font-size:17px}
 #orgplan-update{border-color:var(--accent)}#orgplan-update #orgplan-update-btn{background:var(--accent)}
+
+/* V0.2.10: five tabs and people directory */
+#tabs{justify-content:space-between;gap:0;padding-left:4px;padding-right:4px}
+#tabs button{flex:1;min-width:0;padding:4px 0;font-size:22px;line-height:1.15}
+#tabs small{font-size:10px;margin-top:4px}
+.persons-total{color:var(--accent);font-weight:700;margin:0 0 18px}
+.persons-sort-label{display:block;color:var(--muted);font-size:13px;margin:8px 0}
+.persons-sort{display:block;width:100%;background:var(--card);color:var(--fg);border:1px solid #45616a;border-radius:12px;padding:12px;font-size:16px;margin-bottom:16px}
+.persons-group{margin:20px 0 28px}
+.persons-group .sectionhead{align-items:center}
+.persons-group h2{margin:0 0 8px}
+.persons-group-count{color:var(--muted);font-size:12px;white-space:nowrap}

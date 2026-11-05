@@ -36,3 +36,9 @@
 #orgplan-update span{flex:1}
 #orgplan-update button{border:0;border-radius:8px;padding:9px;background:#30C7BA;color:#0B1016;font-weight:700;white-space:nowrap}
 #orgplan-update #orgplan-update-close{background:transparent;color:#F2F8F8;font-size:20px;padding:4px}
+
+/* V0.2.7: secure backup password dialog */
+.backup-overlay{position:fixed;inset:0;z-index:10000;background:#000b;display:flex;align-items:center;justify-content:center;padding:18px}
+.backup-dialog{background:#1B2930;color:#F2F8F8;border:1px solid #30C7BA;border-radius:16px;padding:20px;width:min(100%,420px);box-shadow:0 10px 40px #0009}
+.backup-dialog h2{margin:0 0 10px}.backup-dialog label{display:block;font-size:14px;margin:14px 0}.backup-dialog input{display:block;box-sizing:border-box;width:100%;margin-top:7px;padding:12px;border-radius:9px;background:#0B1016;color:#F2F8F8;border:1px solid #60787e;font-size:16px}
+.backup-actions{display:flex;justify-content:flex-end;gap:9px;margin-top:14px}.backup-actions button{border:0;border-radius:8px;padding:11px;background:#30C7BA;color:#0B1016;font-weight:700}.backup-actions [data-cancel]{background:#344A50;color:#F2F8F8}.backup-error{color:#ffadad;font-size:13px}

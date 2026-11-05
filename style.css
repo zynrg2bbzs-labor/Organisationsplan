@@ -19,3 +19,14 @@
 
 /* V0.2.4: kompakte Diensthandy-Zeile */
 .mobile-row{padding:9px 12px;margin:9px 0;gap:8px;min-height:0}.mobile-row span{min-width:0;overflow-wrap:anywhere;font-size:13px}.mobile-row small{font-size:10px;margin-top:2px}.mobile-row .pill{padding:5px 8px;flex-shrink:0}.mobile-row a{font-size:12px;flex-shrink:0}
+
+/* V0.2.5: konsistente Pfeile und Sonderzuständigkeiten */
+.columns .rowcard{display:flex;align-items:center;justify-content:space-between}
+.rowcard .chev{flex-shrink:0;font-size:21px;line-height:1}
+.special-person .content{flex:1;min-width:0}
+.special-person strong{display:block}
+.no-profile-label{font-size:11px;color:var(--muted);white-space:nowrap;flex-shrink:0}
+.special-notes{font-size:13px;color:var(--muted);line-height:1.45;margin:10px 0 12px}
+.special-notes p{margin:6px 0}
+.rating-hint{margin:7px 3px 12px}
+#rating-results h3{color:var(--accent);margin:14px 0 8px}

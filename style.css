@@ -58,3 +58,13 @@
 .persons-group .sectionhead{align-items:center}
 .persons-group h2{margin:0 0 8px}
 .persons-group-count{color:var(--muted);font-size:12px;white-space:nowrap}
+
+/* V0.2.13 secure lock screen */
+html.security-locked #app,html.security-locked #tabs,html.security-locked #orgplan-update{visibility:hidden!important}
+#security-screen{position:fixed;inset:0;z-index:20000;background:#0b1016;color:#f2f8f8;display:flex;align-items:center;justify-content:center;padding:20px;box-sizing:border-box}
+#security-form{width:min(100%,420px);background:#1b2930;border:1px solid #30c7ba;border-radius:18px;padding:24px;box-sizing:border-box}
+#security-form h1{font-size:23px;margin:6px 0 10px}#security-form p{color:#d0e0e3;line-height:1.5}#security-form label{display:block;margin:18px 0 10px;font-size:14px}
+#security-form input{display:block;width:100%;box-sizing:border-box;font-size:17px;border:1px solid #68818a;border-radius:10px;padding:13px;background:#0b1016;color:white;margin-top:7px}
+#security-form button{width:100%;padding:13px;margin:10px 0;border:0;border-radius:10px;background:#30c7ba;color:#0b1016;font-size:16px;font-weight:700}
+#security-form button:disabled{opacity:.6}#security-form small{display:block;color:#b6c8cb;line-height:1.5;margin-top:10px}
+#security-error{color:#ffb4b4!important}.security-symbol{text-align:center;font-size:35px}

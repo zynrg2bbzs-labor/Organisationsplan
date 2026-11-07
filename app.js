@@ -1,5 +1,5 @@
 'use strict';
-const APP_VERSION='0.2.13.1';
+const APP_VERSION='0.2.13.2';
 const ACCENTS=[['Türkis','#30C7BA'],['Blau','#4B9FFF'],['Violett','#A78BFA'],['Grün','#64C785'],['Orange','#F4A261'],['Pink','#EE83B7']];
 let db={Personen:[],Organisationseinheiten:[],Sonderzuständigkeiten:[],Bewertung_Gemarkungen:[]},tab='start',page=null,query='',history=[],favorites=[],chosen=[],mobile={},openAreas=new Set(),prefs={},ratingQuery='';
 const $=s=>document.querySelector(s),clean=s=>String(s??'').trim(),norm=s=>clean(s).toLocaleLowerCase('de'),esc=s=>clean(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),escapeInput=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),slug=s=>encodeURIComponent(s),read=(k,d)=>Object.prototype.hasOwnProperty.call(secureState,k)?secureState[k]:d,save=(k,v)=>{if(!vaultKey)throw Error('App ist gesperrt');secureState[k]=structuredClone(v);scheduleVaultSave()};

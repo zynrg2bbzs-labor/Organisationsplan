@@ -1,11 +1,26 @@
-Organisationsplan V0.2.13 – TESTVERSION mit App-Passwort und verschlüsseltem lokalen Datenspeicher.
-Alle 10 Dateien in dasselbe GitHub-Pages-Repository hochladen. Installierte App NICHT löschen.
-WICHTIG: Vor dem Update eine verschlüsselte Datensicherung aus V0.2.12 erstellen und extern sicher aufbewahren.
-Beim ersten Öffnen ein neues App-Passwort (mindestens 12 Zeichen) festlegen. Das Passwort ist NICHT wiederherstellbar.
-Nach erfolgreicher Verschlüsselung entfernt die App die alten unverschlüsselten localStorage-Einträge.
-Bei Verlassen der App wird die Ansicht gesperrt. Face ID/Touch ID ist in dieser Version NICHT enthalten.
-Nur mit fiktiven Testdaten prüfen; noch nicht für echte Mitarbeiterdaten freigegeben.
+Organisationsplan V0.2.13.5 – Sicherheits-Testversion
 
-V0.2.13.2: Startdiagnose (Fehlercode bei Ladeproblem), keine Löschung lokaler Daten. Nur fiktive Testdaten.
+Nur mit fiktiven Testdaten verwenden. Vor dem Update verschlüsselte
+Datensicherung der funktionierenden V0.2.13.4 erstellen.
 
-V0.2.13.4: Fix for temporal dead zone at initial personsSort assignment; load preference after unlocking. Test data only.
+Neu:
+- Face ID / Passkey als optionale Entsperrmethode via WebAuthn-PRF.
+  Einrichtung unter Mehr > Sicherheit mit dem aktuellen App-Passwort.
+  Passwortentsperrung bleibt als Rückfalllösung erhalten.
+- Optionaler Schnellzugriff ohne zusätzliche App-Sperre, z.B. auf einem
+  gesondert abgesicherten Diensthandy. Hierbei wird ein lokal gespeicherter,
+  nicht exportierbarer IndexedDB-Schlüssel für das automatische Entsperren
+  verwendet. Dieser Modus ist weniger sicher: Skripte derselben Web-Origin
+  können den Schlüssel ohne Nutzerbestätigung benutzen.
+- Passwortänderung deaktiviert alternative Entsperrmethoden vorsorglich.
+  Face ID bzw. Schnellzugriff können danach neu eingerichtet werden.
+
+Einschränkungen:
+- Face ID/PRF ist in der installierten iPhone-PWA noch NICHT getestet.
+- Offline-Neustart mit Face ID muss gesondert getestet werden.
+- Vollständige Sicherheitsprüfung und Originalimport stehen noch aus.
+- Bei Problemen App nicht löschen, keine Website-Daten zurücksetzen.
+- App-Passwort sicher aufbewahren.
+
+Alle zehn Programmdateien ins bestehende GitHub-Repository hochladen.
+Keine Excel-Daten ins Repository hochladen.

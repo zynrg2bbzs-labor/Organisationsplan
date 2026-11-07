@@ -7,3 +7,5 @@ Bei Verlassen der App wird die Ansicht gesperrt. Face ID/Touch ID ist in dieser 
 Nur mit fiktiven Testdaten prüfen; noch nicht für echte Mitarbeiterdaten freigegeben.
 
 V0.2.13.2: Startdiagnose (Fehlercode bei Ladeproblem), keine Löschung lokaler Daten. Nur fiktive Testdaten.
+
+V0.2.13.3: Fix for temporal dead zone at initial personsSort assignment; load preference after unlocking. Test data only.
